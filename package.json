@@ -4,7 +4,7 @@
   "description": "game server",
   "main": "src/index.js",
   "scripts": {
-    "start": "yarn && tsc && node src/index.js",
+    "start": "npm install && tsc && node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev":  "nodemon"
   },
