@@ -13,4 +13,4 @@ fuse.bundle("server/bundle")
     .completed(proc => proc.start())
 
 
-fuse.run();
+//fuse.run();
