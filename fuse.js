@@ -8,9 +8,5 @@ const fuse = FuseBox.init({
 fuse.bundle("server/bundle")
     .watch("**") // watch only server related code.. bugs up atm
     .instructions(" > [index.ts]")
-    // Execute process right after bundling is completed
-    // launch and restart express
-    .completed(proc => proc.start())
 
-
-//fuse.run();
+fuse.run();
