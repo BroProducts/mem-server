@@ -25,4 +25,4 @@ if(cluster.isMaster) {
   gameServer.attach({ server: app });
 }
 
-console.log(`Listening on http://localhost:${ port }`)
+console.log(`Listen on http://localhost:${ port }`)
