@@ -15,7 +15,7 @@ if(cluster.isMaster) {
   gameServer.listen(port);
   gameServer.fork()
 } else {
-  let app new express();
+  let app = new express();
   app.get("/something", function (req, res) {
       console.log("something!", process.pid);
       res.send("Hey!");
