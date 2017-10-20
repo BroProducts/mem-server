@@ -5,12 +5,7 @@ const fuse = FuseBox.init({
     output: "dist/$name.js"
 });
 
-fuse.bundle("server/bundle")
-    .watch("**") // watch only server related code.. bugs up atm
+fuse.bundle("server/bundle") // watch only server related code.. bugs up atm
     .instructions(" > [index.ts]")
-    // Execute process right after bundling is completed
-    // launch and restart express
-    .completed(proc => proc.start())
-
-
-//fuse.run();
+    
+fuse.run();
