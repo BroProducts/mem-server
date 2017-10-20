@@ -2,11 +2,11 @@
   "name": "mem-server",
   "version": "0.0.1",
   "description": "game server",
-  "main": "src/index.js",
+  "main": "dist/server/bundle.js",
   "scripts": {
-    "start": "npm install && tsc && node src/index.js",
+    "start": "node fuse.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":  "nodemon"
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -26,10 +26,10 @@
     "colyseus": "^0.5.2",
     "express": "^4.14.0",
     "nodemon": "^1.11.0",
-    "serve-index": "^1.8.0",
-    "typescript": "^2.4.2"
+    "serve-index": "^1.8.0"
   },
   "devDependencies": {
+    "fuse-box": "^2.3.3",
     "typescript": "^2.4.2"
   }
 }
