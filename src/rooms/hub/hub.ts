@@ -17,6 +17,8 @@ export class Hub extends Room {
     //When a client try to joins the room
     //If true client joins the room
     requestJoin(options) {
+      console.log("request join!", options);
+
       //TODO: If a user from friendlist is in the room u can still join(only in the Hub)
       return this.clients.length < this.maxClients
     }
@@ -46,7 +48,4 @@ export class Hub extends Room {
       console.log(this.state)
       console.log('lol')
     }
-
-
-
 }
