@@ -1,11 +1,27 @@
 # server
 
+
 ## Dev Setup
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:2657
+npm run dev
+
+# TODO
+# build for production with minification
+npm run build
+```
+
+## Dev Setup with yarn
+``` bash
+# serve with hot reload at localhost:2657
+yarn dev: starts the server with nodemon
 
 yarn start: starts the server with the bundler
 
-
-yarn dev: starts the server with nodemon
+```
 
 ## Prod Setup
 
