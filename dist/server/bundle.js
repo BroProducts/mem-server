@@ -9,8 +9,7 @@ var http_1 = require("http");
 var colyseus_1 = require("colyseus");
 // Require Hub handler
 var hub_1 = require("./rooms/hub/hub");
-console.log(process.env.SERVERPORT)
-var port = Number(process.env.SERVERPORT || 2657);
+var port = Number(process.env.PORT || 2657);
 var app = express();
 // Create HTTP Server
 var httpServer = http_1.createServer(app);
