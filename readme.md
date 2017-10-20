@@ -2,6 +2,11 @@
 
 ## Dev Setup
 
+yarn start: starts the server with the bundler
+
+
+yarn dev: starts the server with nodemon
+
 ## Prod Setup
 
 ## Links
