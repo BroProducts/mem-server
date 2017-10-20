@@ -1,24 +1,28 @@
-import * as path from 'path'
+import * as cluster from 'cluster'
 import * as express from 'express'
-import { createServer } from 'http'
-import { Server } from 'colyseus'
+import { ClusterServer } from 'colyseus'
 
 // Require Hub handler
 import { Hub } from './rooms/hub/hub'
 
 const port = Number(process.env.PORT || 2657)
-const app = express()
-
-// Create HTTP Server
-const httpServer = createServer(app)
-
-// Attach WebSocket Server on HTTP Server.
-const gameServer = new Server({ server: httpServer })
+const gameServer = new ClusterServer();
 
 // Register Hub as "hub"
 gameServer.register('hub', Hub)
 
+if(cluster.isMaster) {
+  gameServer.listen(port);
+  gameServer.fork()
+} else {
+  let app new express();
+  app.get("/something", function (req, res) {
+      console.log("something!", process.pid);
+      res.send("Hey!");
+  });
 
-gameServer.listen(port)
+  // Create HTTP Server
+  gameServer.attach({ server: app });
+}
 
 console.log(`Listening on http://localhost:${ port }`)
