@@ -8,7 +8,8 @@ export class Hub extends Room {
     //When room is initialized
     onInit (options) {
         this.setState(new StateHandler)
-        this.setPatchRate( 1000 / 20 );
+        //this.setPatchRate( 1000 / 20 );
+        this.setPatchRate( 1000 );
         this.setSimulationInterval( this.update.bind(this) );
 
         console.log("Hub created!", options);
