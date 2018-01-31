@@ -9,7 +9,7 @@ export class Hub extends Room {
     onInit (options) {
         this.setState(new StateHandler)
         //this.setPatchRate( 1000 / 20 );
-        this.setPatchRate( 1000 );
+        this.setPatchRate( 1 );
         this.setSimulationInterval( this.update.bind(this) );
 
         console.log("Hub created!", options);
@@ -20,7 +20,6 @@ export class Hub extends Room {
     requestJoin(options) {
       console.log("request join!", options);
 
-      //TODO: If a user from friendlist is in the room u can still join(only in the Hub)
       return this.clients.length < this.maxClients
     }
 
