@@ -46,7 +46,5 @@ export class Hub extends Room {
 
     update () {
       this.state.increaseCounter()
-      console.log(this.state)
-      console.log('lol')
     }
 }
