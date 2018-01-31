@@ -1,47 +1,27 @@
-import * as http from "http";
-import * as express from "express";
-import * as bodyParser from "body-parser";
-import { Server } from "colyseus";
-
-const app = new express();
-const gameServer = new Server();
-gameServer.attach({ server: app });
+import * as express from 'express';
+import { createServer } from 'http';
+import { Server } from 'colyseus';
 
 import { Hub } from "./rooms/hub/hub";
 
-// Register Hub as "hub"
-gameServer.register('hub', Hub)
-console.log('hub register')
+const port = Number(process.env.PORT || 2657);
+const app = express();
 
+// Create HTTP Server
+const httpServer = createServer(app);
 
+// Attach WebSocket Server on HTTP Server.
+const gameServer = new Server({ server: httpServer });
 
-/* Old Cluster Server
-import * as cluster from 'cluster'
-import * as express from 'express'
-import { ClusterServer } from 'colyseus'
+// Register BasicRoom as "basic"
+gameServer.register("basic", Hub);
 
-// Require Hub handler
-import { Hub } from './rooms/hub/hub'
+// Register BasicRoom with initial options, as "basic_with_options"
+// onInit(options) will receive client join options + options registered here.
+gameServer.register("basic_with_options", Hub, {
+    custom_options: "you can use me on Room#onInit"
+});
 
-const port = Number(process.env.PORT || 2657)
-const gameServer = new ClusterServer();
+gameServer.listen(port);
 
-// Register Hub as "hub"
-gameServer.register('hub', Hub)
-
-if(cluster.isMaster) {
-  gameServer.listen(port);
-  gameServer.fork()
-} else {
-  let app = new express();
-  app.get("/something", function (req, res) {
-      console.log("something!", process.pid);
-      res.send("Hey!");
-  });
-
-  // Create HTTP Server
-  gameServer.attach({ server: app });
-}
-
-console.log(`Listening all the time on http://localhost:${ port }`)
-*/
+console.log(`Listening on http://localhost:${ port }`);

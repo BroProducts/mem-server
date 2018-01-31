@@ -7,11 +7,11 @@
 npm install
 
 # serve with hot reload at localhost:2657
-npm run dev
+yarn dev
 
 # TODO
 # build for production with minification
-npm run build
+yarn build
 ```
 
 ## Dev Setup with yarn
