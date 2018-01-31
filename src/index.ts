@@ -13,8 +13,8 @@ const httpServer = createServer(app);
 // Attach WebSocket Server on HTTP Server.
 const gameServer = new Server({ server: httpServer });
 
-// Register BasicRoom as "basic"
-gameServer.register("basic", Hub);
+// Register HubRoom as "hub"
+gameServer.register("hub", Hub);
 
 gameServer.register("basic_with_options", Hub, {
     custom_options: "you can use me on Room#onInit"
