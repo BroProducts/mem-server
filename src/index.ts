@@ -16,8 +16,6 @@ const gameServer = new Server({ server: httpServer });
 // Register BasicRoom as "basic"
 gameServer.register("basic", Hub);
 
-// Register BasicRoom with initial options, as "basic_with_options"
-// onInit(options) will receive client join options + options registered here.
 gameServer.register("basic_with_options", Hub, {
     custom_options: "you can use me on Room#onInit"
 });
