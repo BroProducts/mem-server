@@ -22,9 +22,6 @@
     "url": "https://github.com/BroProducts/mem/issues"
   },
   "homepage": "https://github.com/BroProducts/mem#readme",
-  "engines": {
-    "node": "8.9.1"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
