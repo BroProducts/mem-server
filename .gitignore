@@ -9,7 +9,7 @@ yarn-error.log*
 src/**/*.js
 
 # Build
-dist
+dist/
 
 # Runtime data
 pids
