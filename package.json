@@ -16,14 +16,12 @@
     "game",
     "server"
   ],
-  "author": "BroProducts, Raphael Hättich, Jonas Voland",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/BroProducts/mem/issues"
   },
   "homepage": "https://github.com/BroProducts/mem#readme",
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "colyseus": "^0.8.9",
     "express": "^4.14.0",
