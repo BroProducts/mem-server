@@ -3,15 +3,15 @@ import { StateHandler } from './stateHandler'
 
 export class Hub extends Room {
 
-    maxClients = 10
+    maxClients = 10;
 
     //When room is initialized
     onInit (options) {
-        this.setState(new StateHandler())
-        this.setPatchRate( 1000 / 20 )
-        this.setSimulationInterval( this.update.bind(this) )
+        this.setState(new StateHandler)
+        this.setPatchRate( 1000 / 20 );
+        this.setSimulationInterval( this.update.bind(this) );
 
-        console.log("Hub created!", options)
+        console.log("hub room created!", options);
     }
 
     //When a client try to joins the room
@@ -24,27 +24,24 @@ export class Hub extends Room {
 
     //When a client joins the room
     onJoin (client) {
-        console.log(`${ client.id } joined hub.`)
         this.state.addPlayer(client)
+        console.log(`${ client.id } joined hub room.`)
     }
 
     //When a client leaves the room
     onLeave (client) {
-        console.log(`${ client.id } left hub.`)
         this.state.removePlayer(client)
+        console.log(`${ client.id } left hub room.`)
     }
 
     //When a client send a message
     onMessage (client, data) {
-        console.log("ChatRoom:", client.id, data)
-        if (data.action) {
-          this.state.movePlayer(client, data.action);
-        }
+        console.log("MovementRoom:", client.id, data)
     }
 
     //Cleanup callback, called after there are no more clients on the room
     onDispose () {
-        console.log("Dispose ChatRoom")
+        console.log("Dispose hub Room")
     }
 
     update () {
