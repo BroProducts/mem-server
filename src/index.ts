@@ -4,7 +4,7 @@ import { Server } from 'colyseus';
 
 // Import Rooms
 import { Hub } from "./rooms/hub/hub";
-import { Movement } from "./rooms/movement/movement";
+import { BattleRoom } from "./rooms/battleroom/battleroom";
 
 const port = Number(process.env.PORT || 2657);
 const app = express();
@@ -17,7 +17,7 @@ const gameServer = new Server({ server: httpServer });
 
 // Register Rooms
 gameServer.register("hub", Hub);
-gameServer.register("movement", Movement);
+gameServer.register("battleroom", BattleRoom);
 
 gameServer.listen(port);
 

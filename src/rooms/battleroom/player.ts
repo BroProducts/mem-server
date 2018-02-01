@@ -1,3 +1,4 @@
+// Player.ts
 export class Player {
   constructor (
     public x: number,

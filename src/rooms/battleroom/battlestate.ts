@@ -1,25 +1,16 @@
+// BattleState.ts
 import { EntityMap } from "colyseus";
 import { Player } from "./Player";
 
-export class StateHandler {
+export class BattleState {
   players: EntityMap<Player> = {};
-  map: any
-  counter: number
-  constructor () {
-    this.players = {}
-    this.map = {}
-    this.counter = 0
-  }
 
   addPlayer (client) {
     this.players[ client.sesssionId ] = new Player(0, 0);
-    console.log('added player')
   }
-
 
   removePlayer (client) {
     delete this.players[ client.sessionId ];
-    console.log('removed player')
   }
 
   movePlayer (client, action) {
@@ -29,9 +20,5 @@ export class StateHandler {
     } else if (action === "right") {
       this.players[ client.sessionId ].x += 1;
     }
-  }
-
-  increaseCounter () {
-    this.counter++
   }
 }
