@@ -2,8 +2,9 @@ import * as express from 'express';
 import { createServer } from 'http';
 import { Server } from 'colyseus';
 
+// Import Rooms
 import { Hub } from "./rooms/hub/hub";
-import { ChatRoom } from "./rooms/chatRoom/chatRoom";
+import { Movement } from "./rooms/movement/movement";
 
 const port = Number(process.env.PORT || 2657);
 const app = express();
@@ -14,12 +15,9 @@ const httpServer = createServer(app);
 // Attach WebSocket Server on HTTP Server.
 const gameServer = new Server({ server: httpServer });
 
-// Register HubRoom as "hub"
-gameServer.register("chat", ChatRoom);
-
-gameServer.register("basic_with_options", Hub, {
-    custom_options: "you can use me on Room#onInit"
-});
+// Register Rooms
+gameServer.register("hub", Hub);
+gameServer.register("movement", Movement);
 
 gameServer.listen(port);
 
