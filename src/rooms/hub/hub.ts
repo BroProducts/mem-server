@@ -7,7 +7,7 @@ export class Hub extends Room {
 
     //When room is initialized
     onInit (options) {
-        this.setState(new StateHandler)
+        this.setState(new StateHandler())
         this.setPatchRate( 1000 / 20 )
         this.setSimulationInterval( this.update.bind(this) )
 
@@ -37,6 +37,9 @@ export class Hub extends Room {
     //When a client send a message
     onMessage (client, data) {
         console.log("ChatRoom:", client.id, data)
+        if (data.action) {
+          this.state.movePlayer(client, data.action);
+        }
     }
 
     //Cleanup callback, called after there are no more clients on the room
