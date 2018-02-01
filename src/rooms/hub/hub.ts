@@ -3,16 +3,15 @@ import { StateHandler } from './stateHandler'
 
 export class Hub extends Room {
 
-    maxClients = 100;
+    maxClients = 10
 
     //When room is initialized
     onInit (options) {
         this.setState(new StateHandler)
-        //this.setPatchRate( 1000 / 20 );
-        this.setPatchRate( 1 );
-        this.setSimulationInterval( this.update.bind(this) );
+        this.setPatchRate( 1000 / 20 )
+        this.setSimulationInterval( this.update.bind(this) )
 
-        console.log("Hub created!", options);
+        console.log("Hub created!", options)
     }
 
     //When a client try to joins the room
@@ -26,11 +25,13 @@ export class Hub extends Room {
     //When a client joins the room
     onJoin (client) {
         console.log(`${ client.id } joined hub.`)
+        this.state.addPlayer(client)
     }
 
     //When a client leaves the room
     onLeave (client) {
         console.log(`${ client.id } left hub.`)
+        this.state.removePlayer(client)
     }
 
     //When a client send a message
