@@ -29,6 +29,6 @@ export class BattleRoom extends Room<BattleState> {
   }
 
   onDispose () {
-    console.log("Dispose ChatRoom");
+    console.log("Dispose BattleRoom");
   }
 }
