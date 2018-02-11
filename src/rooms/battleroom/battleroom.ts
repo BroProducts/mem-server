@@ -12,6 +12,7 @@ export class BattleRoom extends Room<BattleState> {
 
   onJoin (client) {
     this.state.addPlayer(client);
+    console.log(this.clients);
   }
 
   onLeave (client) {
@@ -29,6 +30,6 @@ export class BattleRoom extends Room<BattleState> {
   }
 
   onDispose () {
-    console.log("Dispose BattleRoom");
+    console.log('Dispose BattleRoom');
   }
 }

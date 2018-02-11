@@ -8,7 +8,7 @@ export class Player {
   ) {
     this.x = x;
     this.y = y;
-    this.hp = 100;
-    this.name = "Player";
+    this.hp = hp;
+    this.name = name;
   }
 }
