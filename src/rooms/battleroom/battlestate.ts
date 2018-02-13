@@ -1,9 +1,11 @@
 // BattleState.ts
-import { EntityMap } from "colyseus";
-import { Player } from "./Player";
+import { EntityMap } from 'colyseus';
+import { Player } from './Player';
+import { Team } from './Team'
 
 export class BattleState {
   players: EntityMap<Player> = {};
+  teams: EntityMap<Team> = {};
 
   addPlayer (client) {
     this.players[ client.sessionId ] = new Player(0,0, 100, 'Player');

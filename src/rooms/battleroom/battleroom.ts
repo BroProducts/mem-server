@@ -1,6 +1,6 @@
 // BattleRoom.ts
-import { Room, Client } from "colyseus";
-import { BattleState } from "./BattleState";
+import { Room, Client } from 'colyseus';
+import { BattleState } from './BattleState';
 
 export class BattleRoom extends Room<BattleState> {
 
