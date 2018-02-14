@@ -10,7 +10,7 @@ export class BattleRoom extends Room<BattleState> {
     this.setSimulationInterval( this.update.bind(this) );
 
     this.state.addTeam(1,'red');
-    this.state.addTeam(20,'blue');
+    this.state.addTeam(2,'blue');
     console.log(this.state);
   }
 
