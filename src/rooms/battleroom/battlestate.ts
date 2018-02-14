@@ -8,7 +8,7 @@ export class BattleState {
   teams: EntityMap<Team> = {};
 
   addPlayer (client) {
-    this.players[ client.sessionId ] = new Player(0,0, 100, 'Player');
+    this.players[ client.sessionId ] = new Player(0,0,0, 100, 'Player', '1');
   }
 
   removePlayer (client) {
@@ -22,5 +22,9 @@ export class BattleState {
     } else if (action === "right") {
       this.players[ client.sessionId ].x += 1;
     }
+  }
+
+  addTeam (teamId: number, teamColor: string) {
+    this.teams[ teamId ] = new Team(teamColor, 0)
   }
 }

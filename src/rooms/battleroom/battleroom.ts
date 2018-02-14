@@ -8,6 +8,10 @@ export class BattleRoom extends Room<BattleState> {
     this.setState(new BattleState());
     this.setPatchRate( 1000 / 20 );
     this.setSimulationInterval( this.update.bind(this) );
+
+    this.state.addTeam(1,'red');
+    this.state.addTeam(20,'blue');
+    console.log(this.state);
   }
 
   onJoin (client) {
