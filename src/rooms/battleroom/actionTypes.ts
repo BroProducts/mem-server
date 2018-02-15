@@ -1,8 +1,8 @@
-export const MOVE_PLAYER_TO = 'MOVE_PLAYER_TO'
+export const AUTO_ATTACK_ENTITY = 'AUTO_ATTACK_ENTITY'
 
 export const CAST_ABILITY = 'CAST_ABILITY'
 
-export const AUTO_ATTACK_ENTITY = 'AUTO_ATTACK_ENTITY'
+export const MOVE_PLAYER_TO = 'MOVE_PLAYER_TO'
 
 export const PICK_UP_ITEM = 'PICK_UP_ITEM'
 
