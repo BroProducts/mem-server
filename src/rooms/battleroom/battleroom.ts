@@ -1,11 +1,12 @@
 // BattleRoom.ts
 import { Room, Client } from 'colyseus';
 import { BattleState } from './BattleState';
+import * as actionTypes from './actionTypes'
 
 export class BattleRoom extends Room<BattleState> {
 
   onInit (options: any) {
-    console.log('RoomInit')
+    console.log('RoomInit Start')
     this.setState(new BattleState());
     this.setPatchRate( 1000 / 20 );
     this.setSimulationInterval( this.update.bind(this) );
@@ -18,7 +19,6 @@ export class BattleRoom extends Room<BattleState> {
 
   onJoin (client) {
     this.state.addPlayer(client);
-    console.log(this.clients);
   }
 
   onLeave (client) {
@@ -27,9 +27,21 @@ export class BattleRoom extends Room<BattleState> {
 
   onMessage (client, data) {
     console.log(data);
+    switch(data.action) {
+       case actionTypes.MOVE_PLAYER_TO: {
+          console.log('MOVE_PLAYER_TO');
+          break;
+       }
+       case actionTypes.SEND_MESSAGE: {
+          console.log('SEND_MESSAGE');
+          break;
+       }
+    }
+    /*
     if (data.action) {
       this.state.movePlayer(client, data.action);
     }
+    */
   }
 
   update () {
