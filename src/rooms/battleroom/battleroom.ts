@@ -27,16 +27,7 @@ export class BattleRoom extends Room<BattleState> {
 
   onMessage (client, data) {
     console.log(data);
-    switch(data.action) {
-       case actionTypes.MOVE_PLAYER_TO: {
-          console.log('MOVE_PLAYER_TO');
-          break;
-       }
-       case actionTypes.SEND_MESSAGE: {
-          console.log('SEND_MESSAGE');
-          break;
-       }
-    }
+    this.state[data.action](data.payload);
     /*
     if (data.action) {
       this.state.movePlayer(client, data.action);

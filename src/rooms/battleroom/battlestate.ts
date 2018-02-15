@@ -2,6 +2,7 @@
 import { EntityMap } from 'colyseus';
 import { Player } from './Player';
 import { Team } from './Team'
+import * as actionTypes from './actionTypes'
 
 export class BattleState {
   players: EntityMap<Player> = {};
@@ -37,5 +38,10 @@ export class BattleState {
 
   addTeam (teamId: number, teamColor: string) {
     this.teams[ teamId ] = new Team(teamColor, 0)
+  }
+
+  [actionTypes.MOVE_PLAYER_TO] ({x,y,z}) {
+    console.log('action: MOVE_PLAYER_TO')
+    console.log('Log: x: ' + x + ' y: ' + y)
   }
 }
