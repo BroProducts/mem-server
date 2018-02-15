@@ -6,7 +6,12 @@ export class Player {
     public z: number,
     public hp: number,
     public name: string,
-    public team: string
+    public team: string,
+    public energy: number,
+    public energyRegenerationSpeed: number,
+    public moveSpeed: number,
+    public xp: number
+
   ) {
     this.x = x;
     this.y = y;
@@ -14,5 +19,9 @@ export class Player {
     this.hp = hp;
     this.name = name;
     this.team = team;
+    this.energy = energy;
+    this.energyRegenerationSpeed = energyRegenerationSpeed;
+    this.moveSpeed = moveSpeed;
+    this.xp = xp;
   }
 }

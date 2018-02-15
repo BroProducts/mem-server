@@ -8,7 +8,18 @@ export class BattleState {
   teams: EntityMap<Team> = {};
 
   addPlayer (client) {
-    this.players[ client.sessionId ] = new Player(0,0,0, 100, 'Player', '1');
+    this.players[ client.sessionId ] = new Player(
+      0, //x
+      0, //y
+      0, //z
+      100, //hp
+      'Player', //name
+      '1', //team
+      30, //energy
+      3, //energyRegenerationSpeed
+      5, //moveSpeed
+      0 //xp
+    );
   }
 
   removePlayer (client) {
