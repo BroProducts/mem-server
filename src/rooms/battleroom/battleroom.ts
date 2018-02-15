@@ -5,6 +5,7 @@ import { BattleState } from './BattleState';
 export class BattleRoom extends Room<BattleState> {
 
   onInit (options: any) {
+    console.log('RoomInit')
     this.setState(new BattleState());
     this.setPatchRate( 1000 / 20 );
     this.setSimulationInterval( this.update.bind(this) );
@@ -12,6 +13,7 @@ export class BattleRoom extends Room<BattleState> {
     this.state.addTeam(1,'red');
     this.state.addTeam(2,'blue');
     console.log(this.state);
+    console.log('RoomInit End')
   }
 
   onJoin (client) {
@@ -24,6 +26,7 @@ export class BattleRoom extends Room<BattleState> {
   }
 
   onMessage (client, data) {
+    console.log(data);
     if (data.action) {
       this.state.movePlayer(client, data.action);
     }
