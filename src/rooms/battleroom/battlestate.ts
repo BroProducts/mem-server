@@ -40,8 +40,9 @@ export class BattleState {
     this.teams[ teamId ] = new Team(teamColor, 0)
   }
 
-  [actionTypes.MOVE_PLAYER_TO] ({x,y,z}) {
+  //actions
+  [actionTypes.MOVE_PLAYER_TO] (client, {x,y,z}) {
     console.log('action: MOVE_PLAYER_TO')
-    console.log('Log: x: ' + x + ' y: ' + y)
+    console.log('Log: x: ' + x + ' y: ' + y + ' z: ' + z)
   }
 }
