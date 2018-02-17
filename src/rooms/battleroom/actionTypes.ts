@@ -11,6 +11,7 @@ export const CAST_ABILITY = 'CAST_ABILITY'
 //I
 export const INTERACT = 'INTERACT'
 //J
+export const JOIN_TEAM = 'JOIN_TEAM'
 //K
 //L
 //M
@@ -24,6 +25,7 @@ export const MOVE_PLAYER_TO = 'MOVE_PLAYER_TO'
 export const SEND_MESSAGE = 'SEND_MESSAGE'
 export const SEND_EMOTION = 'SEND_EMOTION'
 export const SEND_PING = 'SEND_PING'
+export const SWITCH_TEAMS = 'SWITCH_TEAMS'
 //T
 //U
 export const USE_ITEM = 'USE_ITEM'

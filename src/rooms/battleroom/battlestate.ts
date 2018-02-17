@@ -41,8 +41,45 @@ export class BattleState {
   }
 
   //actions
+  [actionTypes.AUTO_ATTACK_ENTITY] (client, payload)  {
+    console.log('action: AUTO_ATTACK_ENTITY')
+    //TODO
+  }
+  [actionTypes.CAST_ABILITY] (client, payload)  {
+    console.log('action: CAST_ABILITY')
+    //TODO
+  }
+  [actionTypes.INTERACT] (client, payload)  {
+    console.log('action: INTERACT')
+    //TODO
+  }
+  [actionTypes.JOIN_TEAM] (client, payload)  {
+    console.log('action: JOIN_TEAM')
+    //TODO
+  }
   [actionTypes.MOVE_PLAYER_TO] (client, {x,y,z}) {
     console.log('action: MOVE_PLAYER_TO')
     console.log('Log: x: ' + x + ' y: ' + y + ' z: ' + z)
+    //TODO
+  }
+  [actionTypes.SEND_MESSAGE] (client, payload)  {
+    console.log('action: SEND_MESSAGE')
+    //TODO
+  }
+  [actionTypes.SEND_EMOTION] (client, payload)  {
+    console.log('action: SEND_EMOTION')
+    //TODO
+  }
+  [actionTypes.SEND_PING] (client, payload)  {
+    console.log('action: SEND_PING')
+    //TODO
+  }
+  [actionTypes.SWITCH_TEAMS] (client, payload)  {
+    console.log('action: SWITCH_TEAMS')
+    //TODO
+  }
+  [actionTypes.USE_ITEM] (client, payload)  {
+    console.log('action: USE_ITEM')
+    //TODO
   }
 }
