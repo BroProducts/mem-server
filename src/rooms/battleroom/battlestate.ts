@@ -1,8 +1,9 @@
 // BattleState.ts
 import { EntityMap } from 'colyseus';
 import { Player } from './Player';
-import { Team } from './Team'
-import * as actionTypes from './actionTypes'
+import { Team } from './Team';
+import * as actionTypes from './actionTypes';
+import { Vector3 } from 'math3d';
 
 export class BattleState {
   players: EntityMap<Player> = {};
@@ -10,16 +11,15 @@ export class BattleState {
 
   addPlayer (client) {
     this.players[ client.sessionId ] = new Player(
-      0, //x
-      0, //y
-      0, //z
       100, //hp
       'Player', //name
       '1', //team
       30, //energy
       3, //energyRegenerationSpeed
       5, //moveSpeed
-      0 //xp
+      0, //xp
+      new Vector3(), //currentPosition
+      new Vector3(), //moveTo
     );
   }
 
@@ -29,10 +29,10 @@ export class BattleState {
 
   movePlayer (client, action) {
     if (action === "left") {
-      this.players[ client.sessionId ].x -= 1;
+      this.players[ client.sessionId ].currentPosition.x -= 1;
 
     } else if (action === "right") {
-      this.players[ client.sessionId ].x += 1;
+      this.players[ client.sessionId ].currentPosition.x += 1;
     }
   }
 
@@ -60,7 +60,11 @@ export class BattleState {
   [actionTypes.MOVE_PLAYER_TO] (client, {x,y,z}) {
     console.log('action: MOVE_PLAYER_TO')
     console.log('Log: x: ' + x + ' y: ' + y + ' z: ' + z)
-    //TODO
+    console.log('play current moveTo')
+    console.log(this.players[ client.sessionId ].moveTo)
+    this.players[ client.sessionId ].moveTo = new Vector3(x,y,z);
+    console.log('play new moveTo')
+    console.log(this.players[ client.sessionId ].moveTo)
   }
   [actionTypes.SEND_MESSAGE] (client, payload)  {
     console.log('action: SEND_MESSAGE')
