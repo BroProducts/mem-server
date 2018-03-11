@@ -5,6 +5,7 @@
   "main": "dist/server/bundle.js",
   "scripts": {
     "start": "nodemon",
+    "dev": "nodemon",
     "startBundle": "node dist/server/bundle.js",
     "bundle": "node fuse.js"
   },
