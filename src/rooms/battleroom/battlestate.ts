@@ -60,11 +60,7 @@ export class BattleState {
   [actionTypes.MOVE_PLAYER_TO] (client, {x,y,z}) {
     console.log('action: MOVE_PLAYER_TO')
     console.log('Log: x: ' + x + ' y: ' + y + ' z: ' + z)
-    console.log('play current moveTo')
-    console.log(this.players[ client.sessionId ].moveTo)
     this.players[ client.sessionId ].moveTo = new Vector3(x,y,z);
-    console.log('play new moveTo')
-    console.log(this.players[ client.sessionId ].moveTo)
   }
   [actionTypes.SEND_MESSAGE] (client, payload)  {
     console.log('action: SEND_MESSAGE')
