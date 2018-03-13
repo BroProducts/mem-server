@@ -1,7 +1,7 @@
 // BattleState.ts
 import { EntityMap } from 'colyseus';
-import { Player } from './Player';
-import { Team } from './Team';
+import { Player } from '../../models/Player';
+import { Team } from '../../models/Team';
 import * as actionTypes from './actionTypes';
 import { Vector3 } from 'math3d';
 
