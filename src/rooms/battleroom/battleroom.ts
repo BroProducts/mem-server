@@ -27,6 +27,10 @@ export class BattleRoom extends Room<BattleState> {
   onMessage (client, data) {
     console.log(data);
     this.state[data.action](client, data.payload);
+
+    if(data.action == 'MOVE_PLAYER_TO') {
+      this.broadcast({ message: "Hello world!" });
+    }
     /*
     if (data.action) {
       this.state.movePlayer(client, data.action);
