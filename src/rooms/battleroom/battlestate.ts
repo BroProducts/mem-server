@@ -10,17 +10,7 @@ export class BattleState {
   teams: EntityMap<Team> = {};
 
   addPlayer (client) {
-    this.players[ client.sessionId ] = new Player(
-      100, //hp
-      'Player', //name
-      '1', //team
-      30, //energy
-      3, //energyRegenerationSpeed
-      5, //moveSpeed
-      0, //xp
-      new Vector3(), //currentPosition
-      new Vector3(), //moveTo
-    );
+    this.players[ client.sessionId ] = Player.generate()
   }
 
   removePlayer (client) {
