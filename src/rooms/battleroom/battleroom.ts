@@ -29,7 +29,14 @@ export class BattleRoom extends Room<BattleState> {
     this.state[data.action](client, data.payload);
 
     if(data.action == 'MOVE_PLAYER_TO') {
-      this.broadcast({ message: "Hello world!" });
+      //this.broadcast(data.payload);
+      this.broadcast({
+        playerId: client.sessionId,
+        action: data.action,
+        x: `${data.payload.x}`,
+        y: `${data.payload.y}`,
+        z: `${data.payload.z}`
+      });
     }
     /*
     if (data.action) {
