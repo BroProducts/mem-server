@@ -31,19 +31,19 @@ export class BattleState {
   }
 
   //actions
-  [actionTypes.AUTO_ATTACK_ENTITY] (client, payload)  {
+  [actionTypes.AUTO_ATTACK_ENTITY] (client, payload) {
     console.log('action: AUTO_ATTACK_ENTITY')
     //TODO
   }
-  [actionTypes.CAST_ABILITY] (client, payload)  {
+  [actionTypes.CAST_ABILITY] (client, payload) {
     console.log('action: CAST_ABILITY')
     //TODO
   }
-  [actionTypes.INTERACT] (client, payload)  {
+  [actionTypes.INTERACT] (client, payload) {
     console.log('action: INTERACT')
     //TODO
   }
-  [actionTypes.JOIN_TEAM] (client, payload)  {
+  [actionTypes.JOIN_TEAM] (client, payload) {
     console.log('action: JOIN_TEAM')
     //TODO
   }
@@ -52,23 +52,27 @@ export class BattleState {
     console.log('Log: x: ' + x + ' y: ' + y + ' z: ' + z)
     this.players[ client.sessionId ].moveTo = new Vector3(x,y,z);
   }
-  [actionTypes.SEND_MESSAGE] (client, payload)  {
+  [actionTypes.SEND_MESSAGE] (client, payload) {
     console.log('action: SEND_MESSAGE')
     //TODO
   }
-  [actionTypes.SEND_EMOTION] (client, payload)  {
+  [actionTypes.SEND_EMOTION] (client, payload) {
     console.log('action: SEND_EMOTION')
     //TODO
   }
-  [actionTypes.SEND_PING] (client, payload)  {
+  [actionTypes.SEND_PING] (client, payload) {
     console.log('action: SEND_PING')
     //TODO
   }
-  [actionTypes.SWITCH_TEAMS] (client, payload)  {
+  [actionTypes.SET_PLAYER_POSITION] (client, {x,y,z}) {
+    console.log('action: SET_PLAYER_POSITION')
+    this.players[ client.sessionId ].currentPosition = new Vector3(x,y,z);
+  }
+  [actionTypes.SWITCH_TEAMS] (client, payload) {
     console.log('action: SWITCH_TEAMS')
     //TODO
   }
-  [actionTypes.USE_ITEM] (client, payload)  {
+  [actionTypes.USE_ITEM] (client, payload) {
     console.log('action: USE_ITEM')
     //TODO
   }
