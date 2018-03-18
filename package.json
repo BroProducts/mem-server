@@ -4,7 +4,10 @@
   "description": "game server",
   "main": "dist/server/bundle.js",
   "scripts": {
-    "start": "node dist/server/bundle.js"
+    "start": "npm run bundle && node dist/server/bundle.js",
+    "dev": "nodemon",
+    "startBundle": "node dist/server/bundle.js",
+    "bundle": "node fuse.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +22,16 @@
   "bugs": {
     "url": "https://github.com/BroProducts/mem/issues"
   },
-  "homepage": "https://github.com/BroProducts/mem#readme"
+  "homepage": "https://github.com/BroProducts/mem#readme",
+  "dependencies": {
+    "colyseus": "^0.8.9",
+    "express": "^4.14.0",
+    "math3d": "^0.2.2",
+    "nodemon": "^1.11.0"
+  },
+  "devDependencies": {
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2",
+    "fuse-box": "^2.4.0"
+  }
 }
