@@ -4,7 +4,7 @@
   "description": "game server",
   "main": "dist/server/bundle.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "npm run bundle && node dist/server/bundle.js",
     "dev": "nodemon",
     "startBundle": "node dist/server/bundle.js",
     "bundle": "node fuse.js"
