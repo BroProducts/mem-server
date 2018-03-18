@@ -8,9 +8,6 @@ yarn-error.log*
 # JavaScript
 src/**/*.js
 
-# Build
-dist/
-
 # Runtime data
 pids
 *.pid
