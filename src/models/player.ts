@@ -1,4 +1,3 @@
-// Player.ts
 import { Vector3 } from 'math3d';
 
 export class Player {

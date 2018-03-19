@@ -1,4 +1,3 @@
-// Team.ts
 export class Team {
   constructor (
     public color: string,

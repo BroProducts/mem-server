@@ -1,6 +1,5 @@
 // map4.ts
-/*
-var map4 = {
+var map = {
   mapName: "map4",
 
   gameMode: "conquest",
@@ -10,11 +9,11 @@ var map4 = {
   teams: [
     {
       id: 1,
-      color: red
+      color: "red"
     },
     {
       id: 2,
-      color: blue
+      color: "blue"
     }
   ],
 
@@ -46,6 +45,7 @@ var map4 = {
       },
       isSpawn: false,
       radius: 9,
+      team: null,
     },
     {
       position: {
@@ -55,6 +55,7 @@ var map4 = {
       },
       isSpawn: false,
       radius: 9,
+      team: null,
     },
     {
       position: {
@@ -64,6 +65,7 @@ var map4 = {
       },
       isSpawn: false,
       radius: 9,
+      team: null,
     },
     {
       position: {
@@ -73,6 +75,7 @@ var map4 = {
       },
       isSpawn: false,
       radius: 9,
+      team: null,
     },
     {
       position: {
@@ -82,6 +85,7 @@ var map4 = {
       },
       isSpawn: false,
       radius: 9,
+      team: null,
     },
     {
       position: {
@@ -91,6 +95,7 @@ var map4 = {
       },
       isSpawn: true,
       radius: 9,
+      team: null,
     },
     {
       position: {
@@ -100,9 +105,11 @@ var map4 = {
       },
       isSpawn: true,
       radius: 9,
+      team: null,
     }
   ],
-  teleporters: {
+
+  teleporters: [
     {
       startPosition: {
         x: -110,
@@ -113,7 +120,8 @@ var map4 = {
         x: -70,
         y: 0,
         z: 80
-      }
+      },
+      team: null,
     },
     {
       startPosition: {
@@ -125,15 +133,9 @@ var map4 = {
         x: -70,
         y: 0,
         z: -80
-      }
+      },
+      team: null,
     }
-  }
-};
-*/
-
-var map = {
-  mapName: "map4",
-
-  gameMode: "conquest",
+  ],
 }
 export default map;
