@@ -18,10 +18,15 @@ export class BattleState {
 
   addPlayer (client) {
     this.players[ client.sessionId ] = Player.generate()
+    console.log('player added');
+    console.log(client.sessionId);
+    console.log('all current players:');
+    console.log(this.players);
   }
 
   removePlayer (client) {
     delete this.players[ client.sessionId ];
+    console.log('player removed')
   }
 
   movePlayer (client, action) {
