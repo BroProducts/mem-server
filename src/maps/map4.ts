@@ -121,7 +121,8 @@ var map = {
         y: 0,
         z: 80
       },
-      team: null,
+      radius: 1,
+      team: 2,
     },
     {
       startPosition: {
@@ -134,7 +135,8 @@ var map = {
         y: 0,
         z: -80
       },
-      team: null,
+      radius: 1,
+      team: 2,
     }
   ],
 }

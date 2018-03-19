@@ -4,6 +4,7 @@ import { Player } from '../../models/Player';
 import { Team } from '../../models/Team';
 import { Spawn } from '../../models/Spawn';
 import { CapturePoint } from '../../models/CapturePoint';
+import { Teleporter } from '../../models/Teleporter';
 
 import * as actionTypes from './actionTypes';
 import { Vector3 } from 'math3d';
@@ -13,6 +14,7 @@ export class BattleState {
   teams: EntityMap<Team> = {};
   spawns: EntityMap<Spawn> = {};
   capturePoints: EntityMap<CapturePoint> = {};
+  teleporters: EntityMap<Teleporter> = {};
 
   addPlayer (client) {
     this.players[ client.sessionId ] = Player.generate()
