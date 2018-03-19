@@ -1,6 +1,6 @@
 // BattleRoom.ts
 import { Room, Client } from 'colyseus';
-import { BattleState } from './BattleState';
+import { BattleState } from './battleState';
 import map from '../../maps/map4';
 
 export class BattleRoom extends Room<BattleState> {

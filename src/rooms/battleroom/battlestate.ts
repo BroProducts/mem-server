@@ -1,10 +1,10 @@
 // BattleState.ts
 import { EntityMap } from 'colyseus';
-import { Player } from '../../models/Player';
-import { Team } from '../../models/Team';
-import { Spawn } from '../../models/Spawn';
-import { CapturePoint } from '../../models/CapturePoint';
-import { Teleporter } from '../../models/Teleporter';
+import { Player } from '../../models/player';
+import { Team } from '../../models/team';
+import { Spawn } from '../../models/spawn';
+import { CapturePoint } from '../../models/capturePoint';
+import { Teleporter } from '../../models/teleporter';
 
 import * as actionTypes from './actionTypes';
 import { Vector3 } from 'math3d';
