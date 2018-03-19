@@ -1,11 +1,13 @@
 // BattleRoom.ts
 import { Room, Client } from 'colyseus';
 import { BattleState } from './BattleState';
+import map from '../../maps/map4';
 
 export class BattleRoom extends Room<BattleState> {
 
   onInit (options: any) {
     console.log('RoomInit Start')
+    console.log(map);
     this.setState(new BattleState());
     this.setPatchRate( 1000 / 40 );
     this.setSimulationInterval( this.update.bind(this) );
