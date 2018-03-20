@@ -8,12 +8,14 @@ var map = {
 
   teams: [
     {
-      id: 1,
-      color: "red"
+      id: "1",
+      color: "red",
+      score: 0
     },
     {
-      id: 2,
-      color: "blue"
+      id: "2",
+      color: "blue",
+      score: 0
     }
   ],
 

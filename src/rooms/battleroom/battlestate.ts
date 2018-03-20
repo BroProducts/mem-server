@@ -38,8 +38,8 @@ export class BattleState {
     }
   }
 
-  addTeam (teamId: number, teamColor: string) {
-    this.teams[ teamId ] = new Team(teamColor, 0)
+  addTeam (id: string, color: string, score: number) {
+    this.teams [ id ] = new Team(id, color, score);
   }
 
   //actions
