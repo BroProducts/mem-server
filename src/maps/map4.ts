@@ -21,25 +21,28 @@ var map = {
 
   spawns: [
     {
+      id: "1",
       position: {
         x: -30,
         y: 2.02,
         z: 0
       },
-      team: 1,
+      team: "1",
     },
     {
+      id: "2",
       position: {
         x: -110,
         y: 0,
         z: 0
       },
-      team: 2,
+      team: "2",
     }
   ],
 
   caputrePoints: [
     {
+      id: "1",
       position: {
         x: 10,
         y: 0,
@@ -50,6 +53,7 @@ var map = {
       team: null,
     },
     {
+      id: "2",
       position: {
         x: 10,
         y: 0,
@@ -60,6 +64,7 @@ var map = {
       team: null,
     },
     {
+      id: "3",
       position: {
         x: -30,
         y: 0,
@@ -70,6 +75,7 @@ var map = {
       team: null,
     },
     {
+      id: "4",
       position: {
         x: -30,
         y: 0,
@@ -80,6 +86,7 @@ var map = {
       team: null,
     },
     {
+      id: "5",
       position: {
         x: 70,
         y: 0,
@@ -90,6 +97,7 @@ var map = {
       team: null,
     },
     {
+      id: "6",
       position: {
         x: 70,
         y: 0,
@@ -100,6 +108,7 @@ var map = {
       team: null,
     },
     {
+      id: "7",
       position: {
         x: 70,
         y: 0,
@@ -113,6 +122,7 @@ var map = {
 
   teleporters: [
     {
+      id: "1",
       startPosition: {
         x: -110,
         y: 0,
@@ -124,9 +134,10 @@ var map = {
         z: 80
       },
       radius: 1,
-      team: 2,
+      team: "2",
     },
     {
+      id: "2",
       startPosition: {
         x: -110,
         y: 0,
@@ -138,7 +149,7 @@ var map = {
         z: -80
       },
       radius: 1,
-      team: 2,
+      team: "2",
     }
   ],
 }

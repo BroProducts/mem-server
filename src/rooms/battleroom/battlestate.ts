@@ -19,9 +19,7 @@ export class BattleState {
   addPlayer (client) {
     this.players[ client.sessionId ] = Player.generate()
     console.log('player added');
-    console.log(client.sessionId);
-    console.log('all current players:');
-    console.log(this.players);
+    console.log(`player sessionId: ${client.sessionId}`);
   }
 
   removePlayer (client) {
@@ -29,17 +27,32 @@ export class BattleState {
     console.log('player removed')
   }
 
-  movePlayer (client, action) {
-    if (action === "left") {
-      this.players[ client.sessionId ].currentPosition.x -= 1;
-
-    } else if (action === "right") {
-      this.players[ client.sessionId ].currentPosition.x += 1;
-    }
-  }
-
   addTeam (id: string, color: string, score: number) {
     this.teams [ id ] = new Team(id, color, score);
+  }
+
+  addSpawn(id: string, position: {x,y,z}, team: string) {
+    this.spawns [ id ] = new Spawn(id, new Vector3(position.x,position.y,position.z), team);
+  }
+
+  addCapturePoint(id: string, position: {x,y,z}, isSpawn: boolean, radius: number, team: string) {
+    this.capturePoints [ id ] = new CapturePoint(
+      id,
+      new Vector3(position.x,position.y,position.z),
+      isSpawn,
+      radius,
+      team
+    );
+  }
+
+  addTeleporter(id: string, startPosition: {x,y,z}, endPosition: {x,y,z}, radius: number, team: string) {
+    this.teleporters [ id ] = new Teleporter(
+      id,
+      new Vector3(startPosition.x,startPosition.y,startPosition.z),
+      new Vector3(endPosition.x,endPosition.y,endPosition.z),
+      radius,
+      team
+    );
   }
 
   //actions
@@ -60,8 +73,6 @@ export class BattleState {
     //TODO
   }
   [actionTypes.MOVE_PLAYER_TO] (client, {x,y,z}) {
-    console.log('action: MOVE_PLAYER_TO')
-    console.log('Log: x: ' + x + ' y: ' + y + ' z: ' + z)
     this.players[ client.sessionId ].moveTo = new Vector3(x,y,z);
   }
   [actionTypes.SEND_MESSAGE] (client, payload) {
@@ -77,7 +88,6 @@ export class BattleState {
     //TODO
   }
   [actionTypes.SET_PLAYER_POSITION] (client, {x,y,z}) {
-    console.log('action: SET_PLAYER_POSITION')
     this.players[ client.sessionId ].currentPosition = new Vector3(x,y,z);
   }
   [actionTypes.SWITCH_TEAMS] (client, payload) {

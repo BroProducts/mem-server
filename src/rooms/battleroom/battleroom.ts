@@ -13,7 +13,31 @@ export class BattleRoom extends Room<BattleState> {
 
     map.teams.forEach((team) => {
       this.state.addTeam(team.id, team.color, team.score);
-    })
+    });
+
+    map.spawns.forEach((spawn) => {
+      this.state.addSpawn(spawn.id, spawn.position, spawn.team)
+    });
+
+    map.caputrePoints.forEach((capturePoint) => {
+      this.state.addCapturePoint(
+        capturePoint.id,
+        capturePoint.position,
+        capturePoint.isSpawn,
+        capturePoint.radius,
+        capturePoint.team
+      )
+    });
+
+    map.teleporters.forEach((teleporter) => {
+      this.state.addTeleporter(
+        teleporter.id,
+        teleporter.startPosition,
+        teleporter.endPosition,
+        teleporter.radius,
+        teleporter.team
+      )
+    });
 
     console.log(this.state);
     console.log('RoomInit End')
