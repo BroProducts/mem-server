@@ -8,8 +8,10 @@ export class BattleRoom extends Room<BattleState> {
   onInit (options: any) {
     console.log('RoomInit Start')
     this.setState(new BattleState());
-    this.setPatchRate( 1000 / 40 );
+    this.setPatchRate( 50 );
     this.setSimulationInterval( this.update.bind(this) );
+
+    this.state.setMaxScore(map.maxScore);
 
     map.teams.forEach((team) => {
       this.state.addTeam(team.id, team.color, team.score);
@@ -39,8 +41,17 @@ export class BattleRoom extends Room<BattleState> {
       )
     });
 
+    //this.clock.start();
+
+    this.clock.setInterval(this.calculateCapturePoints.bind(this), 10000)
+
     console.log(this.state);
     console.log('RoomInit End')
+  }
+
+  calculateCapturePoints() {
+    //TODO calculate each teams points which they gain with capture Points
+    console.log(this.clock.elapsedTime)
   }
 
   onJoin (client) {

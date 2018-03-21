@@ -15,6 +15,11 @@ export class BattleState {
   spawns: EntityMap<Spawn> = {};
   capturePoints: EntityMap<CapturePoint> = {};
   teleporters: EntityMap<Teleporter> = {};
+  maxScore: number = null;
+
+  setMaxScore(maxScore: number) {
+    this.maxScore = maxScore;
+  }
 
   addPlayer (client) {
     this.players[ client.sessionId ] = Player.generate()
@@ -53,6 +58,10 @@ export class BattleState {
       radius,
       team
     );
+  }
+
+  inceaseTeamScore (teamId: string, points: number) {
+    this.teams [ teamId ].score += points
   }
 
   //actions

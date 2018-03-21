@@ -6,6 +6,8 @@ var map = {
 
   numberOfPlayers: 24,
 
+  maxScore: 500,
+
   teams: [
     {
       id: "1",
