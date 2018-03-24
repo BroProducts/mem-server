@@ -7,11 +7,10 @@ export class BattleRoom extends Room<BattleState> {
 
   onInit (options: any) {
     console.log('RoomInit Start')
-    this.setState(new BattleState());
+    this.setState(new BattleState(map.maxScore, map.mapName, map.gameMode, map.numberOfPlayers));
     this.setPatchRate( 50 );
     this.setSimulationInterval( this.update.bind(this) );
 
-    this.state.setMaxScore(map.maxScore);
 
     map.teams.forEach((team) => {
       this.state.addTeam(team.id, team.color, team.score);

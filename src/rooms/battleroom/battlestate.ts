@@ -16,9 +16,15 @@ export class BattleState {
   capturePoints: EntityMap<CapturePoint> = {};
   teleporters: EntityMap<Teleporter> = {};
   maxScore: number = null;
+  mapName: string = null;
+  gameMode: string = null;
+  numberOfPlayers: number = null;
 
-  setMaxScore(maxScore: number) {
+  constructor (maxScore: number, mapName: string, gameMode: string, numberOfPlayers: number) {
     this.maxScore = maxScore;
+    this.mapName = mapName;
+    this.gameMode = gameMode;
+    this.numberOfPlayers = numberOfPlayers;
   }
 
   addPlayer (client) {
