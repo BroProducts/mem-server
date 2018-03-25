@@ -28,7 +28,21 @@ export class BattleState {
   }
 
   addPlayer (client) {
-    this.players[ client.sessionId ] = Player.generate()
+    var teamId = this.getTeamIdWithFewestPlayers();
+    console.log('teamWithFewestPlayers');
+    console.log(teamId);
+    this.players[ client.sessionId ] = new Player(
+      client.sessionId, //id
+      100, //hp
+      'Player', //name
+      teamId, //team
+      20, //energy
+      3, //energyRegenerationSpeed
+      5, //moveSpeed
+      0, //xp
+      new Vector3(), //currentPosition
+      new Vector3(), //moveTo
+    );
     console.log('player added');
     console.log(`player sessionId: ${client.sessionId}`);
   }
@@ -112,5 +126,36 @@ export class BattleState {
   [actionTypes.USE_ITEM] (client, payload) {
     console.log('action: USE_ITEM')
     //TODO
+  }
+
+
+  //getters
+  getTeamIdWithFewestPlayers() {
+    var teams = this.teams;
+    var keysTeams = Object.keys(teams);
+
+    var players = this.players;
+    var keysPlayers = Object.keys(this.players);
+
+    var teamWithFewestPlayers;
+    var numberOfPlayersInTeamWithFewestPlayers = Infinity;
+
+    keysTeams.forEach(keyTeam => {
+      var numberOfPlayersInTeam = 0;
+      keysPlayers.forEach(keyPlayer => {
+        var isInThisTeam = players[keyPlayer].team == keyTeam;
+        numberOfPlayersInTeam = isInThisTeam ? numberOfPlayersInTeam + 1 : numberOfPlayersInTeam;
+      });
+      if(teamWithFewestPlayers) {
+        teamWithFewestPlayers = numberOfPlayersInTeamWithFewestPlayers > numberOfPlayersInTeam ?
+        teams[keyTeam] :
+        teamWithFewestPlayers;
+        numberOfPlayersInTeamWithFewestPlayers = numberOfPlayersInTeam;
+      } else {
+        teamWithFewestPlayers = teams[keyTeam];
+        numberOfPlayersInTeamWithFewestPlayers = numberOfPlayersInTeam;
+      };
+    });
+    return teamWithFewestPlayers.id;
   }
 }

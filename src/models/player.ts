@@ -2,6 +2,7 @@ import { Vector3 } from 'math3d';
 
 export class Player {
   constructor (
+    public id: string,
     public hp: number,
     public name: string,
     public team: string,
@@ -13,6 +14,7 @@ export class Player {
     public moveTo: Vector3,
 
   ) {
+    this.id = id;
     this.hp = hp;
     this.name = name;
     this.team = team;
@@ -26,6 +28,7 @@ export class Player {
 
   static generate () {
     return new Player(
+      'few32f34', //id
       100, //hp
       'Player', //name
       '1', //team
