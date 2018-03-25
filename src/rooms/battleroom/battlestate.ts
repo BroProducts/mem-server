@@ -29,8 +29,7 @@ export class BattleState {
 
   addPlayer (client) {
     var teamId = this.getTeamIdWithFewestPlayers();
-    console.log('teamWithFewestPlayers');
-    console.log(teamId);
+    var spawnOfTeam = this.getSpawnByTeamId(teamId);
     this.players[ client.sessionId ] = new Player(
       client.sessionId, //id
       100, //hp
@@ -40,11 +39,12 @@ export class BattleState {
       3, //energyRegenerationSpeed
       5, //moveSpeed
       0, //xp
-      new Vector3(), //currentPosition
+      new Vector3(spawnOfTeam.position.x, spawnOfTeam.position.y, spawnOfTeam.position.z), //currentPosition
       new Vector3(), //moveTo
     );
     console.log('player added');
     console.log(`player sessionId: ${client.sessionId}`);
+    console.log(this.players[ client.sessionId]);
   }
 
   removePlayer (client) {
@@ -157,5 +157,18 @@ export class BattleState {
       };
     });
     return teamWithFewestPlayers.id;
+  }
+
+  getSpawnByTeamId(teamId: string){
+    var spawns = this.spawns;
+    var keysSpawns = Object.keys(this.spawns);
+    var teamSpawn = null;
+    keysSpawns.forEach(spawnKey => {
+      var spawn = spawns[spawnKey];
+      if(spawn.team == teamId) {
+        teamSpawn = spawn;
+      }
+    });
+    return teamSpawn;
   }
 }
