@@ -15,10 +15,10 @@ export class BattleState {
   spawns: EntityMap<Spawn> = {};
   capturePoints: EntityMap<CapturePoint> = {};
   teleporters: EntityMap<Teleporter> = {};
-  maxScore: number = null;
-  mapName: string = null;
-  gameMode: string = null;
-  numberOfPlayers: number = null;
+  maxScore: number;
+  mapName: string;
+  gameMode: string;
+  numberOfPlayers: number;
 
   constructor (maxScore: number, mapName: string, gameMode: string, numberOfPlayers: number) {
     this.maxScore = maxScore;
@@ -60,13 +60,14 @@ export class BattleState {
     this.spawns [ id ] = new Spawn(id, new Vector3(position.x,position.y,position.z), team);
   }
 
-  addCapturePoint(id: string, position: {x,y,z}, isSpawn: boolean, radius: number, team: string) {
+  addCapturePoint(id: string, position: {x,y,z}, isSpawn: boolean, radius: number, team: string, takenTo: number) {
     this.capturePoints [ id ] = new CapturePoint(
       id,
       new Vector3(position.x,position.y,position.z),
       isSpawn,
       radius,
-      team
+      team,
+      takenTo,
     );
   }
 
@@ -128,8 +129,30 @@ export class BattleState {
     //TODO
   }
 
-
   //getters
+  getTeamsAsArray() {
+    var teams = this.teams;
+    var keysTeams = Object.keys(teams);
+
+    var teamsArr = [];
+    keysTeams.forEach(keyTeam => {
+      teamsArr.push(teams[keyTeam]);
+    });
+    return teamsArr;
+  };
+
+  getCapturePointsAsArray() {
+    var capturePoints = this.capturePoints;
+    var keysCapturePoints = Object.keys(capturePoints);
+
+    var capturePointsArr = [];
+    keysCapturePoints.forEach(keyCapturePoint => {
+      capturePointsArr.push(capturePoints[keyCapturePoint]);
+    });
+    return capturePointsArr;
+  }
+
+  //TODO use getTeamsAsArray in this function
   getTeamIdWithFewestPlayers() {
     var teams = this.teams;
     var keysTeams = Object.keys(teams);

@@ -26,7 +26,8 @@ export class BattleRoom extends Room<BattleState> {
         capturePoint.position,
         capturePoint.isSpawn,
         capturePoint.radius,
-        capturePoint.team
+        capturePoint.team,
+        capturePoint.takenTo,
       )
     });
 
@@ -49,8 +50,17 @@ export class BattleRoom extends Room<BattleState> {
   }
 
   calculateCapturePoints() {
-    //TODO calculate each teams points which they gain with capture Points
-    console.log(this.clock.elapsedTime)
+    var teams = this.state.getTeamsAsArray();
+    var capturePoints = this.state.getCapturePointsAsArray();
+    teams.forEach(team => {
+      var newScorePoints = 0;
+      capturePoints.forEach(capturePoint => {
+        if(capturePoint.team == team.id && capturePoint.takenTo > 49) {
+          newScorePoints = newScorePoints + 10;
+        }
+      });
+      team.score = team.score + newScorePoints;
+    });
   }
 
   onJoin (client) {

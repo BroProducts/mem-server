@@ -53,6 +53,7 @@ var map = {
       isSpawn: false,
       radius: 9,
       team: null,
+      takenTo: 0,
     },
     {
       id: "2",
@@ -64,6 +65,7 @@ var map = {
       isSpawn: false,
       radius: 9,
       team: null,
+      takenTo: 0,
     },
     {
       id: "3",
@@ -75,6 +77,7 @@ var map = {
       isSpawn: false,
       radius: 9,
       team: null,
+      takenTo: 0,
     },
     {
       id: "4",
@@ -86,6 +89,7 @@ var map = {
       isSpawn: false,
       radius: 9,
       team: null,
+      takenTo: 0,
     },
     {
       id: "5",
@@ -97,6 +101,7 @@ var map = {
       isSpawn: false,
       radius: 9,
       team: null,
+      takenTo: 0,
     },
     {
       id: "6",
@@ -108,6 +113,7 @@ var map = {
       isSpawn: true,
       radius: 9,
       team: null,
+      takenTo: 0,
     },
     {
       id: "7",
@@ -119,6 +125,7 @@ var map = {
       isSpawn: true,
       radius: 9,
       team: null,
+      takenTo: 0,
     }
   ],
 
