@@ -15,6 +15,7 @@ export class BattleState {
   spawns: EntityMap<Spawn> = {};
   capturePoints: EntityMap<CapturePoint> = {};
   teleporters: EntityMap<Teleporter> = {};
+  elapsedTime: number = 0;
   maxScore: number;
   mapName: string;
   gameMode: string;
@@ -82,7 +83,19 @@ export class BattleState {
   }
 
   inceaseTeamScore (teamId: string, points: number) {
-    this.teams [ teamId ].score += points
+    this.teams [ teamId ].score += points;
+    console.log(' new Team Score')
+    console.log(this.teams [ teamId ].score)
+    if(this.teams [ teamId ].score >= this.maxScore){
+      //TODO end game
+      console.log('Team wonnered');
+    }
+  }
+
+  setElapsedTime(elapsedTime: number) {
+    this.elapsedTime = elapsedTime;
+    console.log('elapsedTime')
+    console.log(this.elapsedTime)
   }
 
   //actions
@@ -141,7 +154,7 @@ export class BattleState {
     return teamsArr;
   };
 
-  getCapturePointsAsArray() {
+  getCapturePointsAsArray(): CapturePoint[] {
     var capturePoints = this.capturePoints;
     var keysCapturePoints = Object.keys(capturePoints);
 
@@ -150,6 +163,17 @@ export class BattleState {
       capturePointsArr.push(capturePoints[keyCapturePoint]);
     });
     return capturePointsArr;
+  }
+
+  getPlayersAsArray(): Player[] {
+    var players = this.players;
+    var keysPlayers = Object.keys(players);
+
+    var playersArr = [];
+    keysPlayers.forEach(keyPlayer => {
+      playersArr.push(players[keyPlayer]);
+    });
+    return playersArr;
   }
 
   //TODO use getTeamsAsArray in this function

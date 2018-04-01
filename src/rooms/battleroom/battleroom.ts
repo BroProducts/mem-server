@@ -3,6 +3,8 @@ import { Room, Client } from 'colyseus';
 import { BattleState } from './battleState';
 import map from '../../maps/map4';
 
+import { Vector } from 'math3d';
+
 export class BattleRoom extends Room<BattleState> {
 
   onInit (options: any) {
@@ -43,11 +45,53 @@ export class BattleRoom extends Room<BattleState> {
 
     //this.clock.start();
 
+    this.clock.setInterval(this.calculateCapturePointTick.bind(this), 5000)
     this.clock.setInterval(this.calculateCapturePoints.bind(this), 10000)
+
+    this.clock.setInterval(this.setElapsedTime.bind(this), 1000)
 
     console.log(this.state);
     console.log('RoomInit End')
   }
+
+  setElapsedTime() {
+    this.state.setElapsedTime(this.clock.elapsedTime)
+  }
+
+  calculateCapturePointTick() {
+    var capturePoints = this.state.getCapturePointsAsArray();
+    var players = this.state.getPlayersAsArray();
+    console.log('CALCULATE TICK');
+    players.forEach(player => {
+      var playerPosition = player.currentPosition;
+      capturePoints.forEach(capturePoint => {
+        var distanceToPlayer = capturePoint.position.distanceTo(playerPosition);
+        var isInRadius = capturePoint.radius > distanceToPlayer;
+        if(isInRadius) {
+          //TODO when more people then 1 are on the sport calculate if something has to change
+          if(capturePoint.team == null) {
+            //capturePoint has no team
+            capturePoint.takenTo = capturePoint.takenTo + 1;
+            capturePoint.team = player.team;
+          } else if(capturePoint.team == player.team) {
+            //capturePoint is same team as player
+            capturePoint.takenTo = capturePoint.takenTo + 1;
+          } else if(capturePoint.team != player.team) {
+            //capturePoint is from other team as player
+            capturePoint.takenTo = capturePoint.takenTo - 1;
+            if(capturePoint.takenTo == 0) {
+              capturePoint.team = null;
+            }
+          }
+        }
+      });
+    });
+    capturePoints.forEach(capturePoint => {
+        if(capturePoint.takenTo > 100) {
+          capturePoint.takenTo = 100;
+        }
+    });
+  };
 
   calculateCapturePoints() {
     var teams = this.state.getTeamsAsArray();
@@ -59,7 +103,11 @@ export class BattleRoom extends Room<BattleState> {
           newScorePoints = newScorePoints + 10;
         }
       });
-      team.score = team.score + newScorePoints;
+      if(newScorePoints > 0) {
+        this.state.inceaseTeamScore(team.id, newScorePoints);
+      }
+      console.log('new score points: ' + newScorePoints)
+      console.log('new team score: ' + team.score)
     });
   }
 
