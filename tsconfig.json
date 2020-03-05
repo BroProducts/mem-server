@@ -2,11 +2,16 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es6",
+        "outDir": "./dist/",
         "lib": [
-            "es2016"
+            "es2016",
+            "dom"
         ],
         "experimentalDecorators": true,
         "noImplicitAny": false,
-        "sourceMap": false
+        "sourceMap": false,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true
     }
 }

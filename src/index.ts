@@ -1,24 +1,25 @@
-import * as express from 'express';
-import { createServer } from 'http';
-import { Server } from 'colyseus';
+import { Server } from "colyseus"
+import { monitor } from '@colyseus/monitor';
+import { createServer } from "http"
+import express from "express"
 
-// Import Rooms
-import { Hub } from "./rooms/hub/hub";
-import { BattleRoom } from "./rooms/battleroom/battleroom";
+import rooms from './rooms'
 
-const port = Number(process.env.PORT || 2657);
-const app = express();
+const port = Number(process.env.port) || 3000
 
-// Create HTTP Server
-const httpServer = createServer(app);
+const app = express()
+app.use(express.json())
 
-// Attach WebSocket Server on HTTP Server.
-const gameServer = new Server({ server: httpServer });
+const gameServer = new Server({
+  server: createServer(app)
+});
 
-// Register Rooms
-gameServer.register("hub", Hub);
-gameServer.register("battleroom", BattleRoom);
+gameServer.define('match', rooms.Match)
 
-gameServer.listen(port);
+const monitorUrl = '/colyseus'
+app.use(monitorUrl, monitor());
 
-console.log(`Listening on http://localhost:${ port }`);
+gameServer.listen(port)
+
+console.log(`Game Server started on http://localhost:${ port }`);
+console.log(`Monitor started on http://localhost:${ port }${monitorUrl}`);

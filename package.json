@@ -1,37 +1,29 @@
 {
-  "name": "mem-server",
-  "version": "0.0.1",
-  "description": "game server",
-  "main": "dist/server/bundle.js",
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "npm run bundle && node dist/server/bundle.js",
+    "start": "tsc && node dist/index.js",
     "dev": "nodemon",
-    "startBundle": "node dist/server/bundle.js",
-    "bundle": "node fuse.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generateClasses": "node build/modelGenerator.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BroProducts/mem.git"
-  },
-  "keywords": [
-    "game",
-    "server"
-  ],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BroProducts/mem/issues"
-  },
-  "homepage": "https://github.com/BroProducts/mem#readme",
-  "dependencies": {
-    "colyseus": "^0.9.2",
-    "express": "^4.14.0",
-    "math3d": "^0.2.2",
-    "nodemon": "^1.11.0"
-  },
+  "license": "MIT",
   "devDependencies": {
-    "ts-node": "^3.3.0",
-    "typescript": "^2.4.2",
-    "fuse-box": "^2.4.0"
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@colyseus/monitor": "^0.12.1",
+    "bignumber.js": "^9.0.0",
+    "colyseus": "^0.12.3",
+    "express": "^4.17.1",
+    "fs-extra": "^8.1.0",
+    "navmesh": "^2.0.3",
+    "shortid": "^2.2.15",
+    "wavefront-obj-parser": "^2.0.1"
   }
 }
