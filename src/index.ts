@@ -5,7 +5,7 @@ import express from "express"
 
 import rooms from './rooms'
 
-const port = Number(process.env.port) || 3000
+const port = Number(process.env.PORT || 3000) + Number(process.env.NODE_APP_INSTANCE || 0);
 
 const app = express()
 app.use(express.json())
